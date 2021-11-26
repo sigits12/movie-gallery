@@ -8,7 +8,10 @@ const DateFilter = (props) => {
 
   return (
     <div className="col col-sm-4">
-      <DatePicker selected={startDate} onChange={(date) => setStartDate(date)} />
+      <DatePicker 
+        dateFormat="dd/MM/yyyy"
+        selected={startDate} 
+        onChange={(date) => setStartDate(date)} />
     </div>
   )
 
