@@ -4,10 +4,12 @@ import "./App.css";
 import MovieList from "./components/MovieList";
 import MovieListHeading from "./components/MovieListHeading";
 import SearchBox from "./components/SearchBox";
+import DateFilter from "./components/DateFilter";
 
 const App = () => {
   const [movies, setMovies] = useState([]);
   const [searchValue, setSearchValue] = useState('');
+  const [dateFilterValue, setDateFilterValue] = useState('');
 
   const getMoviesRequest = async (searchValue) => {
     
@@ -28,6 +30,7 @@ const App = () => {
       <div className="row d-flex align-items-center mt-4 mb-4">
         <MovieListHeading heading="Movies" />
         <SearchBox searchValue={searchValue} setSearchValue={setSearchValue} />
+        <DateFilter dateFilterValue={dateFilterValue} setDateFilterValue={setDateFilterValue} />
       </div>
       <div className="row">
         <MovieList movies={movies} />
