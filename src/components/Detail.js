@@ -7,14 +7,26 @@ const Detail = () => {
   const { showDetail, selectedMovie } = useContext(MovieContext);
   useEffect(() => {
     showDetail(id);
-  }, [id]);
+  });
 
   return (
-    <div class="card" style={{ width: "18rem" }}>
-      <img src={selectedMovie.Poster} class="card-img-top" alt={selectedMovie.Title} />
-      <div class="card-body">
-        <p class="card-text">{selectedMovie.Title} - {selectedMovie.Year}</p>
+    <div className="container d-flex justify-content-center">
+      <div className="card" style={{ width: "18rem" }}>
+        <img src={selectedMovie.Poster} className="card-img-top" alt={selectedMovie.Title} />
       </div>
+      <div className="m-4">
+        <ul>
+          <ol><i>Title</i> : <b>{selectedMovie.Title}</b> </ol>
+          <ol><i>Year</i> : <b>{selectedMovie.Year}</b> </ol>
+          <ol><i>Rated</i> : <b>{selectedMovie.Rated}</b> </ol>
+          <ol><i>Released</i> : <b>{selectedMovie.Released}</b> </ol>
+          <ol><i>Runtime</i> : <b>{selectedMovie.Runtime}</b> </ol>
+          <ol><i>Genre</i> : <b>{selectedMovie.Genre}</b> </ol>
+          <ol><i>imdbRating : <b>{selectedMovie.imdbRating}</b></i></ol>
+          <ol><i>imdbVotes : <b>{selectedMovie.imdbVotes}</b></i></ol>
+        </ul>
+      </div>
+
     </div>
   );
 };
