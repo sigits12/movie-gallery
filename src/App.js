@@ -1,41 +1,33 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
-import MovieList from "./components/MovieList";
-import MovieListHeading from "./components/MovieListHeading";
-import SearchBox from "./components/SearchBox";
-import DateFilter from "./components/DateFilter";
+import Navbar from "./components/Navbar";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+// import { routes } from "./config/Router";
+
+import Detail from "./components/Detail";
+import Dashboard from "./components/Dashboard";
 
 const App = () => {
-  const [movies, setMovies] = useState([]);
-  const [searchValue, setSearchValue] = useState('');
-  const [dateFilterValue, setDateFilterValue] = useState('');
-
-  const getMoviesRequest = async (searchValue) => {
-    
-    const url = `http://www.omdbapi.com/?s=${searchValue}&apikey=867b0ad3`
-
-    const response = await fetch(url);
-    const responseJson = await response.json();
-
-    if(responseJson.Search) {setMovies(responseJson.Search);}
-  }
-
-  useEffect(() => {
-    getMoviesRequest(searchValue);
-  }, [searchValue]);
 
   return (
-    <div className="container-fluid movie-list">
-      <div className="row d-flex align-items-center mt-4 mb-4">
-        <MovieListHeading heading="Movies" />
-        <SearchBox searchValue={searchValue} setSearchValue={setSearchValue} />
-        <DateFilter dateFilterValue={dateFilterValue} setDateFilterValue={setDateFilterValue} />
+    <Router>
+      <div className="container-fluid movie-list">
+        <div className="row d-flex align-items-center mt-4 mb-4">
+          <Navbar />
+        </div>
+        <div className="row">
+          <Switch>
+              <Route exact={true} path="/">
+                <Dashboard />
+              </Route>
+              <Route path="/detail/:id">
+                <Detail />
+              </Route>
+          </Switch>
+        </div>
       </div>
-      <div className="row">
-        <MovieList movies={movies} />
-      </div>
-    </div>
+    </Router>
   );
 }
 

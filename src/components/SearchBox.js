@@ -15,7 +15,7 @@ const SearchBox = (props) => {
   }
 
   return (
-    <div className="col col-sm-4">
+    <div className="col col-sm-3">
       <input 
         className="form-control" 
         placeholder="Search" 
