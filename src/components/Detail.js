@@ -12,7 +12,7 @@ const Detail = () => {
   return (
     <div className="container d-flex justify-content-center">
       <div className="card" style={{ width: "18rem" }}>
-        <img src={selectedMovie.Poster} className="card-img-top" alt={selectedMovie.Title} />
+        {/* <img src={selectedMovie.Poster} className="card-img-top" alt={selectedMovie.Title} /> */}
       </div>
       <div className="m-4">
         <ul>
