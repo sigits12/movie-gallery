@@ -9,24 +9,25 @@ const MovieApp = ({ children }) => {
   const [yearFilter, setYearFilter] = useState('');
   const [selectedMovie, setSelectedMovie] = useState('');
 
-  let url = 'https://api.themoviedb.org/3';
+  const baseUrl = 'https://api.themoviedb.org/3';
+  let url = '';
+  let params = { api_key: API_KEY }
 
   const fetchMovies = async (searchValue, yearFilter) => {
     let params = { api_key: API_KEY }
-
     if (searchValue || yearFilter) {
       if (searchValue) {
-        url = url + '/search/movie'
+        url = baseUrl + '/search/movie'
         params.query = searchValue
         params.primary_release_year = yearFilter
       }
 
       if (yearFilter && !searchValue) {
-        url = url + '/discover/movie'
+        url = baseUrl + '/discover/movie'
         params.primary_release_year = yearFilter
       }
     } else {
-      url = url + '/movie/top_rated'
+      url = baseUrl + '/movie/top_rated'
     }
 
     const response = await fetch(url + '?' + new URLSearchParams(params));
@@ -40,12 +41,14 @@ const MovieApp = ({ children }) => {
   };
 
   const showDetail = async (id) => {
-    const url = `http://www.omdbapi.com/?i=${id}&apikey=${API_KEY}`
+    const url = baseUrl + `/movie/${id}`
 
-    const response = await fetch(url);
+    const response = await fetch(url + '?' + new URLSearchParams(params));
     const responseJson = await response.json();
 
-    if (responseJson) { setSelectedMovie(responseJson); }
+    if (responseJson) {
+      setSelectedMovie(responseJson);
+    }
   };
 
   useEffect(() => {

@@ -6,21 +6,23 @@ const YearFilter = (props) => {
 
   const [startDate, setStartDate] = useState(false);
 
-  function handleDateChange (date) {
+  function handleDateChange(date) {
     setStartDate(date)
     props.setYearFilterValue(date.getFullYear())
   };
-  
+
   return (
-    <div className="col col-sm-5 d-flex align-items-center">
-      <div className="m-2">Filter By Year</div>
-      <DatePicker
-        onChange={handleDateChange}
-        selected={startDate}
-        showYearPicker
-        dateFormat="yyyy"
-        placeholderText="Year"
-      />
+    <div className="col col-sm-6 d-flex justify-content-end">
+      <label>Filter By Year</label>
+      <div className="col col-sm-6">
+        <DatePicker
+          onChange={handleDateChange}
+          selected={startDate}
+          showYearPicker
+          dateFormat="yyyy"
+          placeholderText="Year"
+        />
+      </div>
     </div>
   )
 

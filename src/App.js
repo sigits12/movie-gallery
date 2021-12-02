@@ -3,30 +3,29 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
 import Navbar from "./components/Navbar";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-// import { routes } from "./config/Router";
-
-import Detail from "./components/Detail";
-import Dashboard from "./components/Dashboard";
+import { routes } from "./config/Router";
 
 const App = () => {
 
   return (
     <Router>
-      <div className="container-fluid movie-list">
-        <div className="row d-flex align-items-center mt-4 mb-4">
-          <Navbar />
-        </div>
-        <div className="row">
+      <header>
+        <Navbar />
+      </header>
+      <main>
+        <div className="container-fluid mt-3">
           <Switch>
-              <Route exact={true} path="/">
-                <Dashboard />
+            {routes.map((route, index) => (
+              <Route exact={route.exact} path={route.path} key={index}>
+                {route.component}
               </Route>
-              <Route path="/detail/:id">
-                <Detail />
-              </Route>
+            ))}
           </Switch>
         </div>
-      </div>
+      </main>
+      <footer className="mastfoot fixed-bottom text-center">
+        <p> Movie Gallery © {new Date().getFullYear()}</p>
+      </footer>
     </Router>
   );
 }

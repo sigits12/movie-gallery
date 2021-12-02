@@ -1,6 +1,8 @@
 body {
-  background: whitesmoke;
+  background: white;
   color: black;
+  margin: 0px;
+  padding-bottom: 70px; 
 }
 
 .movie-list > .row {
@@ -10,4 +12,10 @@ body {
 
 .row > .content {
   width: auto;
+}
+
+.mastfoot {
+  background-color: black;
+  color: white;
+  width: 100%;
 }

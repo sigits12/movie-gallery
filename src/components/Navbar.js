@@ -1,19 +1,17 @@
-import React, { useContext } from "react";
-import { MovieContext } from '../context/MovieContext';
-
-import MovieListHeading from "./MovieListHeading";
-import SearchBox from "./SearchBox";
-import YearFilter from "./YearFilter";
+import React from "react";
+import { Link } from "react-router-dom";
 
 const Navbar = () => {
-  const { setSearch, setYearFilter} = useContext(MovieContext);
 
   return (
-    <>
-      <MovieListHeading heading="Movies" />
-      <SearchBox setSearchValue={setSearch} />
-      <YearFilter setYearFilterValue={setYearFilter} />
-    </>
+    <nav className="navbar navbar-dark bg-dark">
+      <div className="container-fluid">
+        <Link
+          to={`/`}
+          className="navbar-brand"
+        >Movie Gallery</Link>
+      </div>
+    </nav>
   )
 
 }
