@@ -10,7 +10,7 @@ export const routes = [
     isHeaderElement: true,
   },
   {
-    path: '/movies/:id',
+    path: '/detail/:id',
     exact: false,
     component: <Detail />,
     title: 'Detail',
